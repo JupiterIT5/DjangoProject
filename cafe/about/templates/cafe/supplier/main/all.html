@@ -1,0 +1,32 @@
+{% extends "cafe/block/base.html" %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/all_supplier.css" %}">
+{% endblock %}
+
+{% block title %}
+    Список поставщиков
+{% endblock %}
+
+{% block content %}
+    <div class="section__supplier">
+        <div class="title">Поставщики</div>
+        <div class="supplier__container">
+            {% for supplier in all_supplier %}
+                <div class="supplier">
+                    <h2>{{ supplier.name }}</h2>
+                    <h3>Фамилия: {{ supplier.agent_lastname }}</h3>
+                    <h3>Имя: {{ supplier.agent_name }}</h3>
+                    {% if supplier.agent_surname %}
+                        <h3>Отчество: {{ supplier.agent_surname }}</h3>
+                    {% endif %}
+                    <h3>Телефон: {{ supplier.phone }}</h3>
+                    <h3>Адрес: {{ supplier.location }}</h3>
+                    <a href="{% url "supplier_menu" supplier.pk %}">Подробнее...</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

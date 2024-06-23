@@ -1,0 +1,31 @@
+{% extends "cafe/block/base.html" %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/supplier.css" %}">
+{% endblock %}
+    
+{% block title %}
+    {{ supplier.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="section__supplier">
+        <div class="title">Поставщик</div>
+        <div class="supplier__container">
+            <div class="supplier">
+                <h2>{{ supplier.name }}</h2>
+                <p>Список поставок: <br/><br/>
+                    {{ supplier.supply }}
+                 </p>
+                <p>
+                    Товары:<br/><br/>
+                    {% for supply in supplier.supply.possupply_set.all %}
+                        {{ supply.product.name }} ({{ supply.count }})<br/>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

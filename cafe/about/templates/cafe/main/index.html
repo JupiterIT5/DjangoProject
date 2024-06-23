@@ -1,0 +1,38 @@
+{% extends "cafe/block/base.html" %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+{% endblock %}
+
+{% block title %}
+    Меню кафе
+{% endblock %}
+
+{% block content %}
+    <div class="section__catalog">
+        <div class="title">Товары</div>
+        <div class="catalog__list">
+            {% for dish in dish_list %}
+                <div class="dish">
+                    {% if dish.photo %}
+                        <img src="{{ dish.photo.url }}" alt="dish">
+                    {% endif %}
+                    <h2>{{ dish.name }}</h2>
+                    <p class='price'>{{ dish.price }} ₽</p>
+                    <h3>
+                        Категории - {{ dish.category }}
+                    </h3>
+                    <h3>
+                        Тег - 
+                        {% for tag in dish.tag.all %}
+                            {{ tag }},
+                        {% endfor %}
+                    </h3>
+                    <a href="{% url "menu_dish" dish.pk%}">Подробнее...</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

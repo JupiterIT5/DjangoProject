@@ -1,0 +1,27 @@
+{% extends "cafe/block/base.html" %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/add.css" %}">
+{% endblock %}
+    
+{% block title %}
+    Добавить поставщика
+{% endblock %}
+
+{% block content %}
+    <div class="add">
+        <div class="title">Добавить поставщика</div>
+        <form method="post" class='form-control'>
+            {% csrf_token %}
+            {{ form.name }}
+            {{ form.agent_lastname }}
+            {{ form.agent_name }}
+            {{ form.agent_surname }}
+            {{ form.phone }}
+            {{ form.location }}
+            <button type="submit" class='submit'>Создать</button>
+        </form>
+    </div>
+{% endblock %}
