@@ -1,0 +1,38 @@
+{% extends "cafe/block/base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static "css/order.css" %}">
+{% endblock  %}
+
+{% block title %}
+    {{ object.action }}
+{% endblock  %}
+
+{% block content %}
+    {% if request.user.is_staff %}
+        <div class='section__order section__order__form'>
+            <form method='post' class='form-control' style="display: flex; flex-direction: column; gap: 10px">
+                {% csrf_token %}
+                Фамилия
+                {{ form.buyer_lastname }}
+                Имя
+                {{ form.buyer_name }}
+                Отчество
+                {{ form.buyer_surname }}
+                Адрес доставки
+                {{ form.location }}
+                Комментарий к доставке
+                {{ form.comment }}
+                Продукт, который необходимо доставить
+                {{ form.product }}
+                Способ доставки.
+                {{ form.delivery }}
+                <button class="submit">Создать<button>
+            </form>
+        </div>
+    {% else  %}
+        <h1 style="font-size: 72px; padding: 26px">Страница не найдена!</h1>
+        <a href="{% url "list_order" %}" style="padding: 0 26px">Вернуться к странице заказов.</a>
+    {% endif %}
+{% endblock  %}

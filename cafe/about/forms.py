@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from .models import *
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -67,11 +68,60 @@ class UserRegistration(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
         label='Введите логин',
-        widget=forms.TextInput({'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
         min_length=2
     )
     
     password = forms.CharField(
         label='Введите пароль',
-        widget=forms.PasswordInput({'class': 'form-control'}),
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
     )
+    
+
+class OrderCreateForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = (
+            'buyer_lastname',
+            'buyer_name',
+            'buyer_surname',
+            'comment',
+            'location',
+            'delivery',
+            'product',
+        )
+
+        buyer_lastname = forms.CharField(
+            min_length=3,
+            label=forms.TextInput(attrs={'class': 'form-control'})
+        )
+        buyer_name = forms.CharField(
+            min_length=3,
+            label=forms.TextInput(attrs={'class': 'form-control'})
+        )
+        buyer_surname = forms.CharField(
+            min_length=3,
+            label=forms.TextInput(attrs={'class': 'form-control'})
+        )
+        comment = forms.CharField(
+            min_length=1,
+            label=forms.TextInput(attrs={'class': 'form-control'})
+        )
+        location = forms.CharField(
+            min_length=1,
+            label=forms.TextInput(attrs={'class': 'form-control'})
+        )
+        delivery = forms.CharField(
+            min_length=2,
+            label=forms.TextInput(attrs={'class': 'form-control'})
+        )
+        
+        buyer_lastname.widget.attrs.update({'placeholder': 'Введите фамилию'})
+        buyer_name.widget.attrs.update({'placeholder': 'Введите имя'})
+        buyer_surname.widget.attrs.update({'placeholder': 'Введите отчество'})
+        comment.widget.attrs.update({'placeholder': 'Введите комментарий'})
+        location.widget.attrs.update({'placeholder': 'Введите адрес доставки'})
+        delivery.widget.attrs.update({'placeholder': 'Укажите способ доставки'})
+        
+        
+        

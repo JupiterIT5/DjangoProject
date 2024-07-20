@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import *
 from .forms import *
 
@@ -131,3 +133,36 @@ def user_logout(request):
     messages.success(request, 'Вы успешно вышли из аккаунта!')
     return redirect('catalog_dish_page')
 
+
+class ListOrder(ListView):
+    model = Order
+    template_name = 'cafe/order/all.html'
+    allow_empty = True
+    
+
+class DetailOrder(DeleteView):
+    model = Order
+    template_name = 'cafe/order/order.html'
+    
+    
+class CreateOrder(CreateView):
+    model = Order
+    template_name = 'cafe/order/order_form.html'
+    extra_context = {
+        'action': 'Создать'
+    }
+    form_class = OrderCreateForm
+    
+
+class UpdateOrder(UpdateView):
+    model = Order
+    template_name = 'cafe/order/order_form.html'
+    extra_context = {
+        'action': 'Обновить'
+    }
+    form_class = OrderCreateForm
+    
+
+class DeleteOrder(DeleteView):
+    model = Order
+    success_url = reverse_lazy('list_order')

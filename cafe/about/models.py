@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse, reverse_lazy
 
 
 MAX_LENGTH = 255
@@ -70,27 +71,30 @@ class Tag(models.Model):
         
 
 class Order(models.Model):
-    PICKUP = 'PK'
-    COURIER = 'CR'
-    DELIVERY_CHOICES = [
-        (PICKUP, 'Самовывоз'),
-        (COURIER, 'Курьер'),
+    SHOP = "SH"
+    COURIER = "CR"
+    PICKUPPOINT = "PP"
+    TYPE_DELIVERY = [
+        (SHOP, 'Магазин'),
+        (COURIER, 'Доставка курьером'),
+        (PICKUPPOINT, 'Пункт выдачи')
     ]
-    
-    count = models.PositiveIntegerField(verbose_name='Номер заказа')
-    customer_lastname = models.CharField(max_length=MAX_LENGTH, verbose_name='Фамилия заказчика')
-    customer_name = models.CharField(max_length=MAX_LENGTH, verbose_name='Имя заказчика')
-    customer_surname = models.CharField(max_length=MAX_LENGTH, null=True, blank=True, verbose_name='Отчество заказчика')
-    comment = models.TextField(blank=True, null=True, verbose_name='Комментарий')
+    buyer_lastname = models.CharField(max_length=MAX_LENGTH, verbose_name='Фамилия покупателя')
+    buyer_name = models.CharField(max_length=MAX_LENGTH, verbose_name='Имя покупателя')
+    buyer_surname = models.CharField(max_length=MAX_LENGTH, blank=True, null=True, verbose_name='Отчество покупателя')
+    comment = models.CharField(max_length=MAX_LENGTH, blank=True, null=True, verbose_name='Комментарий к заказу')
     location = models.CharField(max_length=MAX_LENGTH, blank=True, null=True, verbose_name='Адрес доставки')
-    delivery = models.CharField(max_length=2, choices=DELIVERY_CHOICES, verbose_name='Способ доставки')
+    delivery = models.CharField(max_length=2, choices=TYPE_DELIVERY, default=SHOP, verbose_name='Способ доставки')
     create_data = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    completion_data = models.DateTimeField(null=True, blank=True, verbose_name='Дата завершения')
-    
+    end_data = models.DateTimeField(null=True, blank=True, verbose_name='Дата завершения')
+
     product = models.ManyToManyField('Product', through='PosOrder', verbose_name='Товар')
     
+    def get_absolute_url(self):
+        return reverse("one_order", kwargs={"pk": self.pk})
+
     def __str__(self):
-        return f'{self.count} | {self.location}'
+        return f'{self.pk} - ({self.buyer_lastname} {self.buyer_name}) {self.create_data}'
     
     class Meta:
         verbose_name = 'Заказ'
@@ -133,13 +137,13 @@ class PosParametr(models.Model):
         
 
 class PosOrder(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.PROTECT, verbose_name='Заказ')
-    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='Товар')
-    count = models.PositiveIntegerField(verbose_name='Количество')
-    discount = models.PositiveIntegerField(verbose_name='Скидка')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='Заказ')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    count = models.PositiveIntegerField(verbose_name='Количество', default=1)
+    discount = models.PositiveIntegerField(verbose_name='Скидка', default=0)
     
     def __str__(self):
-        return f'{self.order.count} | {self.product.name} ({self.count})'
+        return f'{self.count} | {self.product.name} ({self.count})'
     
     class Meta:
         verbose_name = 'Позиция заказа'
