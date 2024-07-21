@@ -32,6 +32,18 @@ class SupplierForm(forms.ModelForm):
             return phone
         return False
     
+class SupplyForm(forms.ModelForm):
+    class Meta:
+        model = PosSupply
+        fields = (
+            'product',
+            'supply',
+            'count'
+        )
+        product = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+        supply = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+        count = forms.IntegerField(min_value = 1, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    
 
 class ProductForm(forms.Form):
     name = forms.CharField(min_length=10, max_length=MAX_LENGTH, label='Название')
@@ -119,16 +131,3 @@ class OrderCreateForm(forms.ModelForm):
             min_length=2,
             label=forms.TextInput(attrs={'class': 'form-control'})
         )
-        
-
-class SupplyForm(forms.ModelForm):
-    class Meta:
-        model = PosSupply
-        fields = (
-            'product',
-            'supply',
-            'count'
-        )
-        product = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-        supply = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-        count = forms.IntegerField(min_value = 1, widget=forms.TextInput(attrs={'class': 'form-control'}))
