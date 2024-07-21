@@ -7,20 +7,24 @@ import re
 
 MAX_LENGTH = 255
 
-class SupplierForm(forms.Form):
-    name = forms.CharField(max_length=MAX_LENGTH, label='Название компании')
-    agent_lastname = forms.CharField(max_length=MAX_LENGTH, label='Фамилия представителя')
-    agent_name = forms.CharField(max_length=MAX_LENGTH, label='Имя представителя')
-    agent_surname = forms.CharField(max_length=MAX_LENGTH, label='Отчество представителя')
-    phone = forms.CharField(max_length=16, label='Телефон представителя')
-    location = forms.CharField(max_length=MAX_LENGTH, label='Адрес')
-    
-    name.widget.attrs.update({'class': 'form-control', 'placeholder': 'Название компании'})
-    agent_lastname.widget.attrs.update({'class': 'form-control', 'placeholder': 'Фамилия'})
-    agent_name.widget.attrs.update({'class': 'form-control', 'placeholder': 'Имя'})
-    agent_surname.widget.attrs.update({'class': 'form-control', 'placeholder': 'Отчество'})
-    phone.widget.attrs.update({'class': 'form-control', 'placeholder': 'Телефон'})
-    location.widget.attrs.update({'class': 'form-control', 'placeholder': 'Адрес'})
+class SupplierForm(forms.ModelForm):
+    class Meta:
+        model = Supplier
+        fields = (
+            'name', 
+            'agent_lastname',
+            'agent_name',
+            'agent_surname',
+            'phone',
+            'location',
+        )
+        
+        name = forms.CharField(max_length=MAX_LENGTH, label='Название компании', widget=forms.TextInput(attrs={'class': 'form-control'}))
+        agent_lastname = forms.CharField(max_length=MAX_LENGTH, label='Фамилия представителя', widget=forms.TextInput(attrs={'class': 'form-control'}))
+        agent_name = forms.CharField(max_length=MAX_LENGTH, label='Имя представителя', widget=forms.TextInput(attrs={'class': 'form-control'}))
+        agent_surname = forms.CharField(max_length=MAX_LENGTH, label='Отчество представителя', widget=forms.TextInput(attrs={'class': 'form-control'}))
+        phone = forms.CharField(max_length=16, label='Телефон представителя')
+        location = forms.CharField(max_length=MAX_LENGTH, label='Адрес', widget=forms.TextInput(attrs={'class': 'form-control'}))
     
     def clean_telephone(self):
         phone = self.cleaned_data['phone']
@@ -116,12 +120,15 @@ class OrderCreateForm(forms.ModelForm):
             label=forms.TextInput(attrs={'class': 'form-control'})
         )
         
-        buyer_lastname.widget.attrs.update({'placeholder': 'Введите фамилию'})
-        buyer_name.widget.attrs.update({'placeholder': 'Введите имя'})
-        buyer_surname.widget.attrs.update({'placeholder': 'Введите отчество'})
-        comment.widget.attrs.update({'placeholder': 'Введите комментарий'})
-        location.widget.attrs.update({'placeholder': 'Введите адрес доставки'})
-        delivery.widget.attrs.update({'placeholder': 'Укажите способ доставки'})
-        
-        
-        
+
+class SupplyForm(forms.ModelForm):
+    class Meta:
+        model = PosSupply
+        fields = (
+            'product',
+            'supply',
+            'count'
+        )
+        product = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+        supply = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+        count = forms.IntegerField(min_value = 1, widget=forms.TextInput(attrs={'class': 'form-control'}))

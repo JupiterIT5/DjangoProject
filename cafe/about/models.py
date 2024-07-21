@@ -11,10 +11,13 @@ class Supplier(models.Model):
     agent_surname = models.CharField(max_length=MAX_LENGTH, null=True, blank=True, verbose_name='Отчество представителя')
     phone = models.CharField(max_length=16, verbose_name='Телефон представителя')
     location = models.CharField(max_length=MAX_LENGTH, verbose_name='Адрес')
-    is_exists = models.BooleanField(default=True, verbose_name='Логическое удаление')
+    is_exists = models.BooleanField(default=False, verbose_name='Логическое удаление')
     
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("supplier_menu", kwargs={"pk": self.pk})
     
     class Meta:
         verbose_name = 'Поставщик'
@@ -151,12 +154,16 @@ class PosOrder(models.Model):
         
 
 class PosSupply(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='Товар')
-    supply = models.ForeignKey(Supply, on_delete=models.PROTECT, verbose_name='Поставка')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    supply = models.ForeignKey(Supply, on_delete=models.CASCADE, verbose_name='Поставка')
     count = models.PositiveIntegerField(verbose_name='Кол-во товара')
     
     def __str__(self):
         return f'{self.supply.date_supply} | {self.product.name} ({self.count})'
+    
+    
+    def get_absolute_url(self):
+        return reverse("detail_supply", kwargs={"pk": self.pk})
     
     class Meta:
         verbose_name = 'Позиция поставки'

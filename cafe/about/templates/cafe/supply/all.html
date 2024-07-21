@@ -1,0 +1,37 @@
+{% extends "cafe/block/base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static "css/supply.css" %}">
+{% endblock  %}
+
+{% block title %}
+    Список поставок
+{% endblock  %}
+
+{% block content %}
+    <div class='section__supply'>
+        <div class='title'>Поставки</div>
+        {% if request.user.is_staff %}
+            <a href="{% url "create_supply" %}"><button class="btn btn-outline-primary">Добавить поставку</button></a>
+        {% endif %}
+        <div class='supply__container'>
+            {% for supply in object_list %}
+                <div class='supply'>
+                    <h2>Номер поставки: {{ supply.pk }}</h2>
+                    <p>Дата поставки: {{ supply.supply.date_supply }}</p>
+                    <div class='section__btn'>
+                        <a href="{% url "detail_supply" supply.pk %}"><button class="btn btn-outline-success">Подробнее</button></a>
+                        {% if request.user.is_staff %}
+                            <a href="{% url "update_supply" supply.pk %}"><button class="btn btn-outline-warning">Изменить</button></a>
+                            <form action="{% url "delete_supply" supply.pk %}" method='post'>
+                                {% csrf_token %}
+                                <a href='#'><button class="btn btn-outline-danger">Удалить</button></a>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock  %}

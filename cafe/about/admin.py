@@ -11,7 +11,9 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
+    list_display = ('name', 'is_exists')
     list_filter = ('is_exists',)
+    list_editable = ('is_exists',)
 
 @admin.register(Supply)
 class SupplyAdmin(admin.ModelAdmin):

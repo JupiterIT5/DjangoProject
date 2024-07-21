@@ -36,36 +36,6 @@ def all_supplier(request):
         'all_supplier': model
     }
     return render(request, 'cafe/supplier/main/all.html', context)
-
-
-def supplier(request, id):
-    model = get_object_or_404(Supplier, pk=id)
-    context = {
-        'supplier': model
-    }
-    return render(request, 'cafe/supplier/supplier/supplier.html', context)
-
-
-def add_supplier(request):
-    if request.user.is_staff:
-        if request.method == 'POST':
-            form_add_supplier = SupplierForm(request.POST)
-            if form_add_supplier.is_valid() and form_add_supplier.clean_telephone():
-                new_supplier = Supplier(**form_add_supplier.cleaned_data)
-                new_supplier.save()
-                messages.success(request, 'Поставщик был успешно добавлен!')
-                return redirect('all_supplier_list')
-            messages.error(request, 'Данные заполнены не верно!')
-            return render(request, 'cafe/add/add_supplier.html', {'form': SupplierForm})
-        else:
-            form = SupplierForm
-            context = {
-                'form': form
-            }
-            return render(request, 'cafe/add/add_supplier.html', context)
-    else:
-        messages.error(request, 'Вы не являетесь сотрудником!')
-        return redirect('catalog_dish_page')
     
 
 def add_product(request):
@@ -166,3 +136,71 @@ class UpdateOrder(UpdateView):
 class DeleteOrder(DeleteView):
     model = Order
     success_url = reverse_lazy('list_order')
+    
+
+class ListSupplier(ListView):
+    model = Supplier
+    template_name = 'cafe/supplier/main/all.html'
+    allow_empty = True
+    
+
+class DetailSupplier(DetailView):
+    model = Supplier
+    template_name = 'cafe/supplier/supplier/supplier.html'
+    
+
+class CreateSupplier(CreateView):
+    model = Supplier
+    template_name = 'cafe/supplier/supplier/supplier_form.html'
+    extra_context = {
+        'action': 'Добавить'
+    }
+    form_class = SupplierForm
+    
+
+class UpdateSupplier(UpdateView):
+    model = Supplier
+    template_name = 'cafe/supplier/supplier/supplier_form.html'
+    extra_context = {
+        'action': 'Обновить'
+    }
+    form_class = SupplierForm
+
+
+class DeleteSupplier(DeleteView):
+    model = Supplier
+    success_url = reverse_lazy('all_supplier_list')
+    
+
+class ListSupply(ListView):
+    model = PosSupply
+    template_name = 'cafe/supply/all.html'
+    allow_empty = True
+    
+
+class DetailSupply(DetailView):
+    model = PosSupply
+    template_name = 'cafe/supply/supply.html'
+
+
+class CreateSupply(CreateView):
+    model = PosSupply
+    extra_context = {
+        'action': 'Добавить'
+    }
+    template_name = 'cafe/supply/supply_form.html'
+    form_class = SupplyForm
+    
+
+class UpdateSupply(UpdateView):
+    model = PosSupply
+    extra_context = {
+        'action': 'Обновить'
+    }
+    template_name = 'cafe/supply/supply_form.html'
+    form_class = SupplyForm
+    
+
+class DeleteSupply(DeleteView):
+    model = PosSupply
+    success_url = reverse_lazy('all_supply')

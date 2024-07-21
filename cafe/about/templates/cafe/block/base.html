@@ -33,8 +33,8 @@
             <li class="nav"><a href="{% url "catalog_dish_page" %}">Товары</a></li>
             <li class="nav"><a href="{% url "all_supplier_list" %}">Поставщики</a></li>
             {% if request.user.is_staff %}
-            <li class="nav"><a href="{% url "list_order" %}">Заказы</a></li>
-                <li class="nav"><a href="{% url "add_new_supplier" %}">Добавить поставщика</a></li>
+                <li class="nav"><a href="{% url "list_order" %}">Заказы</a></li>
+                <li class="nav"><a href="{% url "all_supply" %}">Поставки</a></li>
                 <li class="nav"><a href="{% url "add_new_product" %}">Добавить товар</a></li>
                 <li class="nav"><a href="{% url "log out" %}">Выйти</a></li>
             {% elif request.user.is_authenticated %}

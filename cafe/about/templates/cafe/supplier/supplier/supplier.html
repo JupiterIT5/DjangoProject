@@ -7,7 +7,7 @@
 {% endblock %}
     
 {% block title %}
-    {{ supplier.name }}
+    {{ object.name }}
 {% endblock %}
 
 {% block content %}
@@ -15,16 +15,24 @@
         <div class="title">Поставщик</div>
         <div class="supplier__container">
             <div class="supplier">
-                <h2>{{ supplier.name }}</h2>
-                <p>Список поставок: <br/><br/>
-                    {{ supplier.supply }}
-                 </p>
-                <p>
-                    Товары:<br/><br/>
-                    {% for supply in supplier.supply.possupply_set.all %}
-                        {{ supply.product.name }} ({{ supply.count }})<br/>
-                    {% endfor %}
-                </p>
+                <h2>Компания: {{ supplier.name }}</h2>
+                <h2>Фамилия: {{ object.agent_lastname }}</h2>
+                <h2>Имя: {{ object.agent_name }}</h2>
+                {% if object.agent_surname %}
+                    <h2>Отчество: {{ object.agent_surname }}</h2>
+                {% endif %}
+                <h2>Телефон: {{ object.phone }}</h2>
+                <h2>Адрес: {{ object.location }}</h2>
+                <div class='section__btn'>
+                    <a href="{% url "all_supplier_list" %}"><button class="btn btn-outline-success">Вернуться к списку</button></a>
+                    {% if request.user.is_staff %}
+                        <a href="{% url "update_supplier" object.pk %}"><button class="btn btn-outline-warning">Изменить</button></a>
+                        <form action="{% url "delete_supplier" object.pk %}" method='post'>
+                            {% csrf_token %}
+                            <a href='#'><button class="btn btn-outline-danger">Удалить</button></a>
+                        </form>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

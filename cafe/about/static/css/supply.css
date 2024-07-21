@@ -2,25 +2,44 @@
     --width: 91.7%
 }
 
-.section__supplier {
-    width: calc(var(--width) - 58px);
+.section__supply {
     padding: 19px 29px;
+    width: calc(var(--width) - 58px);
+    height: auto;
     background-color: #fff;
     border-radius: 20px;
     margin: 0 auto;
+    margin-bottom: 50px;
+    position: relative;
 }
 
-.section__supplier .title {
-    font-family: Poppins, sans-serif;
+.section__supply .title {
     font-size: 32px;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     margin-bottom: 50px;
 }
 
+.section__supply > a {
+    position: absolute;
+    top: 19px;
+    right: 29px;
+    width: 200px;
+    height: 46px;
+}
 
-.section__supplier .supplier__container .supplier {
+.section__supply .supply__container {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    width: 900px;
+    column-gap: 100px;
+    row-gap: 50px;
+    margin: 0 auto;
+}
+
+.section__supply .supply__container .supply {
     width: 400px;
-    height: auto;
+    height: 500px;
     border: 1px solid #a09f9f;
     padding: 10px 15px;
     display: flex;
@@ -28,7 +47,7 @@
     flex-direction: column;
 }
 
-.section__supplier .supplier__container .supplier h2 {
+.section__supply .supply__container .supply h2 {
     font-size: 24px;
     font-family: Poppins;
     font-weight: 300;
@@ -37,7 +56,7 @@
     line-height: 28px;
 }
 
-.section__supplier .supplier__container .supplier p {
+.section__supply .supply__container .supply p {
     border-bottom: 1px solid #000;
     font-size: 18px;
     font-family: Poppins;
@@ -45,12 +64,25 @@
     margin: 10px 0;
 }
 
-.section__supplier__form form {
+.section__btn {
+    display: flex;
+    column-gap: 25px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.section__btn button {
+    margin-top: 25px;
+}
+
+.section__supply__form form {
     font-size: 20px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.section__supplier__form form input {
+.section__supply__form input, .section__supply__form textarea {
     height: 56px;
     padding: 0 19px;
     border-radius: 16px;
@@ -63,7 +95,11 @@
     margin-top: 10px;
 }
 
-.section__supplier__form button {
+.section__supply__form textarea {
+    height: 250px;
+}
+
+.section__supply__form button {
     height: 56px;
     border: 1px solid #a09f9f;
     font-size: 16px;
@@ -72,10 +108,10 @@
     margin-top: 50px;
 }
 
-.section__supplier__form form button {
+.section__supply__form form button {
     display: none;
 }
 
-.section__supplier__form form .submit {
+.section__supply__form form .submit {
     display: block;
 }

@@ -8,6 +8,7 @@
     background-color: #fff;
     border-radius: 20px;
     margin: 0 auto;
+    position: relative;
 }
 
 .section__supplier .title {
@@ -15,6 +16,12 @@
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 50px;
+}
+
+.section__supplier > a {
+    position: absolute;
+    top: 19px;
+    right: 29px;
 }
 
 .section__supplier .supplier__container {
