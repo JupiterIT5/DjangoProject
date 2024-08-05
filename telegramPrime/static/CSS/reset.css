@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Monto";
+  src: url("../FONT/Montserrat-Medium.ttf");
+}
+* {
+  font-family: "Monto";
+}
+body::-webkit-scrollbar{
+  width: 9px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #1c9ee0;
+  border-radius: 10px;
+
+}
+body::-webkit-scrollbar-track{
+  background: #f1f1f1;
+}
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+button {
+  cursor: pointer;
+  transition: 0.5s;
+}
+button:hover {
+  scale: 1.05;
+}
+body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.page {
+  max-width: 1280px;
+  width: 100%;
+  height: fit-content;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.burger__list .list{
+  color: #2e363e;
+}

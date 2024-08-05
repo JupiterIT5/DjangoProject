@@ -1,0 +1,174 @@
+/* header mobile */
+@media (max-width: 1116px) {
+  .header__list {
+    width: 600px;
+  }
+  .list {
+    font-size: 13px;
+  }
+  .header__contact,
+  .header__logo {
+    font-size: 13px;
+  }
+}
+@media (max-width: 794px) {
+  .header__list {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .header__contact {
+    display: none;
+  }
+  .language__change {
+    margin-right: 0px;
+  }
+}
+@media (max-width: 457px) {
+  header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .header__logo {
+    height: 50px;
+    margin-right: 20px;
+  }
+  .burger {
+    height: 40px;
+  }
+  .burger span {
+    margin-top: 20px;
+  }
+}
+/* navigation */
+@media (max-width: 457px) {
+  nav {
+    padding-left: 20px;
+  }
+}
+@media (max-width: 444px) {
+  nav a {
+    font-size: 15px;
+  }
+  .blog__page {
+    margin-left: 5px;
+    font-size: 15px;
+    color: #8dcbea;
+  }
+}
+/* post */
+@media (max-width: 923px) {
+  .post__wrapper {
+    flex-flow: column;
+  }
+  .post__navigation {
+    display: grid;
+    grid-template-columns: 180px 180px;
+    grid-template-rows: 17px 17px;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .post__list {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 519px) {
+  .post__name {
+    font-size: 25px;
+  }
+  .post__navigation {
+    display: flex;
+    flex-flow: row;
+    overflow-y: scroll;
+    grid-gap: 0px;
+    justify-content: flex-start;
+  }
+  .post__list {
+    min-width: 200px;
+  }
+}
+@media (max-width: 457px) {
+  .post {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 444px) {
+  .post__description {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1488px) {
+  .page {
+    max-width: 100%;
+  }
+  .post {
+    max-width: 100%;
+  }
+  header{
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+  footer{
+    max-width: 100%;
+  }
+}
+@media (min-width: 1612px) {
+  .page {
+    max-width: 1700px;
+    display: flex;
+
+    flex-flow: column;
+  }
+  .post {
+    max-width: 1700px;
+  }
+}
+/* contact popup */
+/* footer */
+@media (max-width: 1023px) {
+  footer {
+    flex-flow: column;
+    height: 100%;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    padding-right: 20px;
+  }
+  .footer__info {
+    width: 100%;
+  }
+  .firstName {
+    align-self: center;
+    margin-left: 0px;
+  }
+  .secondName {
+    align-self: center;
+  }
+  .thirdName {
+    align-self: center;
+    margin-right: 0px;
+  }
+  .footer__info__name::after {
+    bottom: -7px;
+  }
+  .footer__info__description {
+    text-align: center;
+  }
+  .footer__social,
+  .footer__mail {
+    justify-content: center;
+    margin-right: 0px;
+  }
+  .firstName{
+    margin-left: 0px;
+  }
+}

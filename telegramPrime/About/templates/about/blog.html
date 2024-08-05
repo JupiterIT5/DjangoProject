@@ -1,0 +1,101 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static "CSS/blog.css" %}" />
+  <link rel="stylesheet" href="{% static "CSS/blogmobile.css" %}" />
+{% endblock styles %}
+
+{% block meta %}
+  <meta name="description" content="Описание вашей страницы">
+  <meta name="keywords" content="Ключевые слова,через,запятую">
+
+  <!-- Превью -->
+    <meta property="og:title" content="Telegram Prime - лучший софт для Telegram!">
+    <meta property="og:site_name" content="telegram-prime.info">
+    <meta property="og:description" content="Добавьте сюда своё описание">
+    <meta property="og:image" content="{% static "IMG/socialpreview.png" %}">
+{% endblock meta %}
+
+{% block title %}
+Telegram Prime - Блог
+{% endblock title %}
+
+{% block nav %}
+  <a href="{% url "home_page" %}" class="list choosen">Главная</a>
+  <a href="{% url "shop_list" %}" class="list">Магазин</a>
+  <p class="list" onclick="scrollToBlock(3998)">Цены</p>
+  <a href="{% url "knowledgebase_list" %}" class="list">База знаний</a>
+  <a href="{% url "blog_page" %}" class="list choosen">Блог</a>
+  <a href="{% url "contact_page" %}">Контакты</a>
+{% endblock nav %}
+
+{% block header_nav %}
+  <a href="{% url "home_page" %}" class="list">Главная</a>
+  <a href="{% url "shop_list" %}" class="list">Магазин</a>
+  <p class="list" onclick="scrollToBlock(3998)">Цены</p>
+  <a href="{% url "knowledgebase_list" %}" class="list">База знаний</a>
+  <a href="{% url "blog_page" %}" class="list choosen">Блог</a>
+  <a href="{% url "contact_page" %}">Контакты</a>
+{% endblock header_nav %}
+
+
+{% block content %}
+<div class="preview__wrap" id="particles-js"></div>
+      <div class="preview">
+        <div class="preview__info">
+          <h1 class="preview__text" data-aos="fade-up">Блог</h1>
+        </div>
+      </div>
+      <div class="navigation__background"></div>
+      <nav class="navigation">
+        <a href="{% url "home_page" %}">Главная</a>
+        <p class="blog__page">> <span>Блог</span></p>
+      </nav>
+      <div class="blog">
+        <h3 class="blog__subtitle translate" data-aos="fade-down">
+          Лучшие из наших Новостей и Блогов
+        </h3>
+        <h2 class="blog__title translate" data-aos="fade-down">
+          Новости и блоги о наших лучших решениях
+        </h2>
+        <div class="blog__wrap">
+          {% for post in post_list %}
+            <section class="post" data-aos="fade-up">
+              <img src="{{ post.image.url }}" alt="Пост" class="post__img" />
+              <div class="post__info">
+                <div class="post__type">{{ post.tag.name }}</div>
+                <div class="time__data">
+                  <img src="{% static "IMG/point.png" %}" alt="" class="point" />
+                  <p class="read__time">Читать 8 мин.</p>
+                </div>
+              </div>
+              <h3 class="post__name">{{ post.title }}</h3>
+              <p class="post__content">{{ post.description }}</p>
+              <div class="line__read">
+                <a href="{% url "post_one" post.pk %}" class="read__text translate">Читать далее...</a>
+              </div>
+            </section>
+          {% endfor %}
+        </div>
+      </div>
+{% endblock content %}
+
+{% block scripts %}
+  <!-- <script src="https://unpkg.com/swiper/swiper-bundle.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- <script src="http://www.jsdelivr.com/#!particles.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/1.0.0/particles.min.js" integrity="sha512-zSXd15DNZUoXEVLbyfTa1XQFk33vi7CcJzPHdBh/7Y3NEEec+l/eBhg2RGgRutwQVfrt9EnBmrYzn6d3NxGG1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <script src="{% static "JS/plugins.js" %}"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="{% static "JS/particles.js" %}"></script>
+  <script src="{% static "JS/index.js" %}"></script>
+  <script src="{% static "JS/requests.js" %}"></script>
+  <script>
+    AOS.init({
+      offset: 120,
+      duration: 800,
+      easing: "ease-in-out",
+    });
+  </script>
+{% endblock scripts %}

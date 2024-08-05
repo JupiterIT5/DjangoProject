@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link rel="icon" href="./IMG/favicon.ico" />
+    <link rel="stylesheet" href="CSS/reset.css" />
+    <link rel="stylesheet" href="CSS/post.css" />
+    <link rel="stylesheet" href="CSS/postmobile.css" />
+
+    <meta name="description" content="Описание вашей страницы">
+    <meta name="keywords" content="Ключевые слова,через,запятую">
+
+    <!-- Превью -->
+     <meta property="og:title" content="Telegram Prime - лучший софт для Telegram!">
+     <meta property="og:site_name" content="telegram-prime.info">
+     <meta property="og:description" content="Добавьте сюда своё описание">
+     <meta property="og:image" content="./IMG/socialpreview.png">
+     
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telegram Prime - лучший софт для Telegram!</title>
+  </head>
+  <body>
+    <div class="contact__popup__wrap">
+      <div class="contact__popup">
+        <div class="contact__text__wrap">
+          <p class="contact__title translate">Контакты</p>
+          <div class="cross" onclick="showHidePopup(1);"></div>
+        </div>
+        <div class="contact__social">
+          <a href="" rel="nofollow">
+            <img src="./IMG/vk.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/facebook.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/whatsapp.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/telegram.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/vk.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/twitter.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/discord.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/element.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/inst.png" alt="" />
+          </a>
+          <a href="" rel="nofollow">
+            <img src="./IMG/TamTam.png" alt="" />
+          </a>
+        </div>
+        <form action="" method="post" class="contact__form">
+          <input
+            type="text"
+            class="contact__name form__input"
+            name="name"
+            placeholder="Ваше имя*"
+          />
+          <input
+            type="text"
+            class="contact__login form__input"
+            name="login"
+            placeholder="Ваш логин Telegram*"
+          />
+          <textarea
+            class="contact__message form__input"
+            name="message"
+            placeholder="Ваше сообщение*"
+          ></textarea>
+          <button
+            class="contact__send translate"
+            type="submit"
+            onclick="validation();sendForm();"
+          >
+            Отправить
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="burger__menu hide__burger">
+      <div class="burger__close__wrap">
+        <p class="project__name">Telegram Prime</p>
+        <div class="cross" onclick="showHideBurger(1)"></div>
+      </div>
+      <div class="burger__list">
+        <a href="index.html" class="list">Главная</a>
+        <a href="shop.html" class="list">Магазин</a>
+        <a href="index.html#pricelist" class="list">Цены</a>
+        <a href="knowledgebase.html" class="list">База знаний</a>
+        <a href="blog.html" class="list choosen">Блог</a>
+        <a href="contacts.html" class="list">Контакты</a>
+      </div>
+    </div>
+    <div class="page">
+      <div class="header__background"></div>
+      <header>
+        <a href="index.html" class="header__logo">Telegram Prime</a>
+        <div class="header__list">
+          <a href="index.html" class="list">Главная</a>
+          <a href="shop.html" class="list">Магазин</a>
+          <a href="index.html#pricelist" class="list">Цены</a>
+          <a href="knowledgebase.html" class="list">База знаний</a>
+          <a href="blog.html" class="list choosen">Блог</a>
+          <a href="contacts.html" class="list">Контакты</a>
+        </div>
+        <!-- <div class="theme__changer" onclick="toggleTheme()">Светлый</div> -->
+        <div class="change__contact__wrap">
+          <div class="burger" onclick="showHideBurger(0)">
+            <span></span>
+          </div>
+          <div class="language__change">
+            <img src="./IMG/ru.webp" alt="" class="lang__img">
+            <p class="lang__text">RU</p>
+          </div>
+          <!-- <div class="change__theme">
+                  <img src="" alt="" class="theme__img" alt="night" />
+                </div> -->
+          <button class="header__contact translate" onclick="showHidePopup(0)">
+            Написать нам
+          </button>
+        </div>
+      </header>
+      <div class="nav__background"></div>
+      <nav class="navigation">
+        <a href="index.html">Главная ></a>
+        <a href="blog.html">Блог</a>
+        <p class="blog__page">> <span>Название поста 1</span></p>
+      </nav>
+      <section class="post">
+        <p class="post__name">Название вашего замечательного поста #1</p>
+        <div class="post__wrapper">
+          <p class="post__description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+            numquam eos soluta amet magni quidem sequi ad omnis explicabo eaque,
+            placeat necessitatibus inventore ullam aspernatur animi quibusdam
+            dicta odit hic. Fugiat, blanditiis neque, corrupti porro debitis,
+            <span class="post__subtitle">Подзаголовок#1</span>
+            nulla minus nihil nobis dolorum aspernatur dicta tenetur? Impedit
+            ratione nemo nam porro similique ex quam atque quaerat. Corrupti
+            enim ipsum mollitia consectetur dolorem! Expedita nesciunt quo
+            eveniet ullam voluptatem eius minima, ducimus aut nulla alias eos ut
+            magnam hic quae unde eaque totam cum, explicabo accusantium ad
+            <span class="post__mark__bullet">
+              <span class="list"><span>•</span> Маркер списка #1</span>
+              <span class="list"><span>•</span> Маркер списка #2</span>
+            </span>
+            sapiente voluptatum veniam fugit saepe. Obcaecati! Provident rerum
+            distinctio modi quis repudiandae alias, delectus nulla. Odit
+            voluptas quos quibusdam velit eum quae iste nulla perferendis,
+            fugiat nam soluta nemo eveniet magni voluptatum? Aperiam nisi
+            <span class="post__subtitle">Подзаголовок#2</span>
+            sapiente voluptas. Lorem ipsum, dolor sit amet consectetur voluptas
+            voluptatum sapiente dicta consequatur in et modi consequuntur omnis
+            doloribus sed. Illum, sit nulla! Facilis iusto ipsa eius rem vitae
+            nostrum iure iste. Voluptates quasi in accusamus facere quis iure
+            consequuntur pariatur aperiam? Est culpa iure
+            <span class="post__subinfo">Мелкий текст #1</span>
+            consequuntur dolorem tempore doloribus hic aut incidunt? Labore?
+            Molestiae consequuntur deleniti incidunt placeat odit itaque, ipsa
+            Molestiae consequuntur deleniti incidunt placeat odit itaque, ipsa<a
+              href=""
+              class="post__sublink"
+              >Гиперссылка#1</a
+            >neque quae. Soluta, reprehenderit! Mollitia aliquid cumque earum.
+            Id, dolore temporibus quibusdam nemo fugit tenetur in dolorum neque
+            deserunt laudantium nesciunt ullam commodi impedit quia at deleniti
+            est distinctio, asperiores incidunt facilis quis eius. Labore,
+            necessitatibus? Recusandae beatae libero, sit ratione quam,
+            accusantium at harum exercitationem nostrum hic impedit dolor
+            dolorum! Incidunt expedita laborum inventore autem, ratione
+            <img src="" alt="" class="post__image">
+            similique tenetur cumque, repudiandae atque unde neque alias.
+            Maiores. Dolorem labore aliquid id dolore. Voluptates repellat
+            provident laborum, atque quo omnis numquam, perspiciatis obcaecati
+            totam nulla nihil modi quaerat veniam. Necessitatibus amet ipsa
+            laudantium voluptates aperiam, laborum suscipit mollitia.
+            Reiciendis, neque. Voluptatum accusamus sequi dolore nihil a optio
+            qui! Quas exercitationem maiores, ducimus id ipsam iste? Itaque a,
+            quo sit provident nobis voluptatum doloremque inventore obcaecati
+            debitis impedit adipisci. Alias explicabo, id eligendi voluptate
+            molestias illo obcaecati dolore quisquam quia consectetur placeat
+            deserunt dignissimos delectus est. Recusandae culpa nobis nemo iste
+            accusantium! Inventore quidem quia sequi dolorem consectetur est.
+            Corrupti soluta aliquid asperiores tempore dolor explicabo sit,
+            beatae rerum exercitationem excepturi accusantium illo dolore quos
+            inventore reiciendis harum distinctio. Totam tempore minima incidunt
+            est ipsa placeat ullam nisi vero! Sunt, id nobis sapiente beatae
+            rem, in dolorum laboriosam obcaecati excepturi ipsum quo ducimus
+            animi enim adipisci labore incidunt ipsa! Voluptates mollitia sint
+            magnam eaque optio quidem, blanditiis aut id! Quidem impedit
+            cupiditate quae quis pariatur eligendi ipsum! Sequi alias rerum
+            harum explicabo quibusdam doloremque id cupiditate? Beatae
+            voluptates quis eum quod voluptatum, repellat sed, dolor assumenda
+            eaque voluptatem maiores.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer__background"></div>
+        <section class="footer__info">
+          <p class="footer__info__name firstName">Важно</p>
+          <p class="footer__info__description">
+            Массовая рассылка сообщений в лички Telegram - это самый
+            результативный метод продвижения бизнеса в Телеграм. С программой
+            TELEGRAM PRIME, вы сможете сэкономить средства на раскрутку своего
+            проекта
+          </p>
+        </section>
+        <section class="footer__info">
+          <p class="footer__info__name secondName">Ссылки</p>
+          <a href="./Documents/Публичная-оферта.pdf" rel="nofollow" class="footer__link firstLink"
+            >Публичная оферта</a
+          >
+          <a href="./Documents/Политика-конфиденциальности.pdf" rel="nofollow" class="footer__link"
+            >Политика конфиденциальности</a
+          >
+        </section>
+        <section class="footer__info thirdInfo">
+          <p class="footer__info__name thirdName">Контакты</p>
+          <div class="mail__content footer__mail">
+            <img src="./IMG/email.png" alt="" class="mail__img" />
+            <p class="mail__name">Email - example@mail.ru (Текст#1)</p>
+          </div>
+          <div class="social__list footer__social">
+            <a href="" rel="nofollow">
+              <img src="./IMG/vk.png" alt="" class="social__img" />
+            </a>
+            <a href="" rel="nofollow">
+              <img src="./IMG/telegram.png" alt="" class="social__img" />
+            </a>
+            <a href="" rel="nofollow">
+              <img src="./IMG/whatsapp.png" alt="" class="social__img" />
+            </a>
+            <a href="" rel="nofollow">
+              <img src="./IMG/youtube.png" alt="" class="social__img" />
+            </a>
+            <a href="" rel="nofollow">
+              <img src="./IMG/discord.png" alt="" class="social__img" />
+            </a>
+          </div>
+        </section>
+      </footer>
+
+    </div>
+    <script src="JS/requests.js"></script>
+    <script src="JS/index.js"></script>
+  </body>
+</html>

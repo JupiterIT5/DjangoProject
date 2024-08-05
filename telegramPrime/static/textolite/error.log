@@ -1,0 +1,4 @@
+[30-Jul-2024 12:34:20 UTC] PHP Deprecated:  Automatic conversion of false to array is deprecated in /home/u290538558/domains/telegram-prime.info/public_html/textolite/textolite.php on line 1
+[30-Jul-2024 15:14:29 UTC] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /home/u290538558/domains/telegram-prime.info/public_html/textolite/textolite.php on line 1
+[30-Jul-2024 15:14:29 UTC] PHP Deprecated:  str_ireplace(): Passing null to parameter #2 ($replace) of type array|string is deprecated in /home/u290538558/domains/telegram-prime.info/public_html/textolite/textolite.php on line 1
+[30-Jul-2024 15:14:29 UTC] PHP Deprecated:  str_ireplace(): Passing null to parameter #2 ($replace) of type array|string is deprecated in /home/u290538558/domains/telegram-prime.info/public_html/textolite/textolite.php on line 1

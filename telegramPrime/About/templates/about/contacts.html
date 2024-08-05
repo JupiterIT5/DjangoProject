@@ -1,0 +1,151 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static "CSS/contacts.css" %}" />
+  <link rel="stylesheet" href="{% static "CSS/contactsmobile.css" %}" />
+{% endblock styles %}
+
+{% block meta %}
+  <meta name="description" content="Описание вашей страницы" />
+  <meta name="keywords" content="Ключевые слова,через,запятую" />
+
+  <!-- Превью -->
+  <meta
+    property="og:title"
+    content="Telegram Prime - лучший софт для Telegram!"
+  />
+  <meta property="og:site_name" content="telegram-prime.info" />
+  <meta property="og:description" content="Добавьте сюда своё описание" />
+  <meta property="og:image" content="{% static "IMG/socialpreview.png" %}" />
+{% endblock meta %}
+
+{% block nav %}
+  <a href="{% url "home_page" %}" class="list">Главная</a>
+  <a href="{% url "shop_list" %}" class="list">Магазин</a>
+  <p class="list" onclick="scrollToBlock(3998)">Цены</p>
+  <a href="{% url "knowledgebase_list" %}" class="list">База знаний</a>
+  <a href="{% url "blog_page" %}" class="list">Блог</a>
+  <a href="{% url "contact_page" %}" class="list choosen">Контакты</a>
+{% endblock nav %}
+
+{% block header_nav %}
+  <a href="{% url "home_page" %}" class="list">Главная</a>
+  <a href="{% url "shop_list" %}" class="list">Магазин</a>
+  <p class="list" onclick="scrollToBlock(3998)">Цены</p>
+  <a href="{% url "knowledgebase_list" %}" class="list">База знаний</a>
+  <a href="{% url "blog_page" %}" class="list">Блог</a>
+  <a href="{% url "contact_page" %}" class="list choosen">Контакты</a>
+{% endblock header_nav %}
+
+{% block content %}
+<div class="contacts">
+  <h1 class="contacts__title">Контакты</h1>
+  <div class="contacts__wrap">
+    <section class="contacts__section">
+      <p class="contacts__subtitle">Связь с нами</p>
+      <div class="mail__content">
+        <img src="{% static "IMG/email.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">Email - example@mail.ru (Текст#1)</p>
+      </div>
+      <div class="mail__content">
+        <img src="{% static "IMG/email.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">Email - example@mail.ru (Текст#2)</p>
+      </div>
+      <div class="mail__content">
+        <img src="{% static "IMG/email.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">Email - example@mail.ru (Текст#3)</p>
+      </div>
+      <div class="mail__content">
+        <img src="{% static "IMG/email.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">Email - example@mail.ru (Текст#4)</p>
+      </div>
+      <div class="mail__content">
+        <img src="{% static "IMG/email.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">Email - example@mail.ru (Текст#5)</p>
+      </div>
+      <div class="mail__content">
+        <img src="{% static "IMG/telegram.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">
+          Telegram - <a rel="nofollow" href="">@example</a>
+        </p>
+      </div>
+      <div class="mail__content">
+        <img src="{% static "IMG/whatsapp.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">
+          Whatsapp - <a rel="nofollow" href="">@example</a>
+        </p>
+      </div>
+      <div class="mail__content">
+        <img src="{% static "IMG/vk.png" %}" alt="" class="mail__img" />
+        <p class="mail__name">
+          VK - <a rel="nofollow" href="">@example</a>
+        </p>
+      </div>
+      <p class="contacts__subtitle second__subtitle">
+        Дополнительная информация
+      </p>
+      <div class="mail__content">
+        <img src="https://cdn-icons-png.flaticon.com/128/3914/3914332.png" alt="" class="mail__img" />
+        <p class="mail__name other__info">Время работы - 24/7</p>
+      </div>
+      <div class="mail__content">
+        <img src="https://cdn-icons-png.flaticon.com/128/3917/3917103.png" alt="" class="mail__img" />
+        <p class="mail__name other__info">
+          Выдача программы через отдел продаж
+        </p>
+      </div>
+      <p class="contacts__subtitle second__subtitle">Социальные сети</p>
+      <div class="social__list">
+        <a href="" rel="nofollow">
+          <img src="{% static "IMG/vk.png" %}" alt="" class="social__img" />
+        </a>
+        <a href="" rel="nofollow">
+          <img src="{% static "IMG/telegram.png" %}" alt="" class="social__img" />
+        </a>
+        <a href="" rel="nofollow">
+          <img src="{% static "IMG/youtube.png" %}" alt="" class="social__img" />
+        </a>
+        <a href="" rel="nofollow">
+          <img src="{% static "IMG/whatsapp.png" %}" alt="" class="social__img" />
+        </a>
+        <a href="" rel="nofollow">
+          <img src="{% static "IMG/discord.png" %}" alt="" class="social__img" />
+        </a>
+      </div>
+    </section>
+    <form
+      onsubmit="submitForm(this); return false"
+      class="contact__form contact__second__form"
+    >
+      <p class="contacts__subtitle third__subtitle">Напишите нам</p>
+      <input
+        type="text"
+        class="contact__name form__input"
+        name="name"
+        placeholder="Ваше имя*"
+      />
+      <input
+        type="text"
+        class="contact__login form__input"
+        name="login"
+        placeholder="Ваш логин Telegram*"
+      />
+      <textarea
+        class="contact__message form__input"
+        name="message"
+        placeholder="Ваше сообщение*"
+      ></textarea>
+      <button class="contact__send translate" type="submit">
+        Отправить
+      </button>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static "JS/requests.js" %}"></script>
+{% endblock scripts %}
