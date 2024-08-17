@@ -1,0 +1,64 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+{% block title %}{{object.name}}{% endblock %}
+
+{% block content %}
+    <div class="detail_product">
+        <div class="product__img"><img src="{{ object.photo.url }}" alt="{{ object.name }}" /></div>
+        <div class="product__text">
+            <h2>{{ object.name }}</h2>
+            <p>{{object.description}}</p>
+            <h3>Цена: {{ object.price }} ₽</h3>
+            <h3>Категория: {% if object.category %}{{object.category}}{% else %}Отсутствует{% endif %}</h3>
+            <h3>
+                Теги: <br/>
+                {% if object.tag.all %}
+                    {% for tag in object.tag.all %}
+                        {{ tag.name }}<br/>
+                    {% endfor %}
+                {% else %}
+                    Отсутствуют
+                {% endif %}
+            </h3>
+            <h3>
+                Характеристики: <br/>
+                {% if object.posparametr_set.all %}
+                    {% for posparametr in object.posparametr_set.all %}
+                        {{ posparametr.parametr }}<br/>
+                    {% endfor %}
+                {% else %}
+                    Отсутствуют
+                {% endif %}
+            </h3>
+            <h3>
+                Значение: <br/>
+                {% if object.posparametr_set.all %}
+                    {% for posparametr in object.posparametr_set.all %}
+                        {{ posparametr.value }}<br/>
+                    {% endfor %}
+                {% else %}
+                    Отсутствует
+                {% endif %}
+            </h3>
+        </div>
+        {% if request.user.is_authenticated %}
+            <div class="product__btn">
+                <form method="post" action="{% url "basket_add" object.pk %}" style="position: absolute; bottom: 10px; left: 10px; display: flex; flex-direction: column; gap: 10px; color: #fff">
+                    {% csrf_token %}
+                    {{ form_basket.as_div }}
+                    <button type="submit" class="buy_product">Купить</button>
+                </form>
+                {% if request.user.is_staff %}
+                    <div class="product__staff__btn">
+                        <a href="{% url "update_product" object.pk %}"><button>Изменить</button></a>
+                        <form method="post" action="{% url "delete_product" object.pk %}">
+                            {% csrf_token %}
+                            <button>Удалить</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

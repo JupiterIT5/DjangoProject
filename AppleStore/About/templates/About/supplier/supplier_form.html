@@ -1,0 +1,23 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+{% block title %}{{action}}{% endblock %}
+
+{% block content %}
+    <form method="post" class='form__container'>
+        {% csrf_token %}
+        <h3>Название компании</h3>
+        {{ form.name }}
+        <h3>Фамилия</h3>
+        {{ form.agent_lastname }}
+        <h3>Имя</h3>
+        {{ form.agent_name }}
+        <h3>Очество</h3>
+        {{ form.agent_surname }}
+        <h3>Адрес</h3>
+        {{ form.location }}
+        <h3>Телефон</h3>
+        {{ form.phone }}
+        <button class="submit">Отправить</button>
+    </form>
+{% endblock %}

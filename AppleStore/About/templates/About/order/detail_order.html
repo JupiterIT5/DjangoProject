@@ -1,0 +1,22 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+{% block title %}{{object.product.name}} || {{ object.count }} шт.{% endblock  %}
+
+{% block content %}
+    <div class="detail__order" style="padding-bottom: 50px">
+        <h3>ФИО: {{object.order.buyer_lastname}} {{object.order.buyer_name}} {{object.order.buyer_surname}}</h3>
+        <h3>Адрес: {{ object.order.location }}</h3>
+        <h3>Товар: {{ object.product.name }} || {{ object.count }} шт.</h3>
+        <h3>Цена: {{ object.product.price }} руб/шт.</h3>
+        <h3>Скидка: {{ object.discount }} %</h3>
+        <div class="order__staff__btn">
+            {% if request.user.is_staff %}
+                <form method="post" action="{% url "order_delete" object.pk %}">
+                    {% csrf_token %}
+                    <button>Удалить</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

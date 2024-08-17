@@ -1,0 +1,108 @@
+.product_container {
+    gap: 50px;
+    display: grid;
+    margin: 50px auto;
+    justify-content: center;
+    grid-template-columns: 300px 300px 300px;
+}
+
+.add__product {
+    width: 200px;
+    height: 41px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    font-family: "Roboto Mono";
+    transition: .3s ease-in-out;
+    margin-top: 30px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add__product:hover {
+    scale: 1.1;
+    transition: .3s ease-in-out;
+}
+
+.product {
+    width: 300px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    position: relative;
+}
+
+.product > a .product__name {
+    transition: .4s ease-in-out;
+}
+
+.product > a:hover .product__name {
+    color: #ffffff6c;
+    transition: .4s ease-in-out;
+}
+
+.product__photo, .product__photo img {
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.product__name {
+    font-family: 'Roboto Mono';
+    color: #fff;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.product__price {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 120px;
+    height: 40px;
+    background-color: tomato;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Roboto Mono';
+}
+
+.product__btn {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    gap: 10px;
+}
+
+.product__btn button {
+    width: 100px;
+    height: 31px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    font-family: "Roboto Mono";
+    transition: .3s ease-in-out;
+}
+
+.product__btn button:hover {
+    scale: 1.1;
+    transition: .3s ease-in-out;
+}
+
+
+.product__btn .staff__btn {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+

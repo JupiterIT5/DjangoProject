@@ -1,0 +1,27 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+
+{% block title %}Order{% endblock %}
+
+{% block content %}
+    <div class="order__container">
+        {% for posorder in object_list %}
+            <div class="order">
+                <h3>ФИО: {{ posorder.order.buyer_lastname }} {{ posorder.order.buyer_name }} {{ posorder.order.buyer_surname }}</h3>
+                <h3>Товар: {{ posorder.product.name }}</h3>
+                <div class="order__btn">
+                    <a href="{% url "order_detail" posorder.pk %}"><button>Подробнее</button></a>
+                    <div class="staff__btn">
+                        {% if request.user.is_staff %}
+                        <form method="post" action="{% url "order_delete" posorder.pk %}">
+                            {% csrf_token %}
+                            <button>Удалить</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock  %}

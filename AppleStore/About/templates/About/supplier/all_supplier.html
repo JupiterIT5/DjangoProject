@@ -1,0 +1,29 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+
+{% block title %}Supplier{% endblock %}
+
+{% block content %}
+    {% if request.user.is_staff %}<a href="{% url "create_supplier" %}" class="add__supplier">Добавить поставщика</a>{% endif %}
+    <div class="supplier__container">
+        {% for supplier in object_list %}
+            <div class="supplier">
+                <h3>{{ supplier.name }}</h3>
+                <h3>{{ supplier.location }}</h3>
+                <div class="supplier__btn">
+                    <a href="{% url "supplier_detail" supplier.pk %}"><button>Подробнее</button></a>
+                    <div class="staff__btn">
+                        {% if request.user.is_staff %}
+                        <a href="{% url "update_supplier" supplier.pk %}"><button>Изменить</button></a>
+                        <form method="post" action="{% url "delete_supplier" supplier.pk %}">
+                            {% csrf_token %}
+                            <button>Удалить</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock  %}

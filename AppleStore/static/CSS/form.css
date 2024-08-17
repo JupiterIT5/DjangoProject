@@ -1,0 +1,71 @@
+.form__container {
+    width: 78.9%;
+    margin: 50px auto;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.form__container input, select {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+    color: #fff;
+    font-family: 'Roboto Mono';
+    padding: 0 16px;
+}
+
+.form__container input {
+    height: 36px;
+}
+
+.form__container select, .form__container div select {
+    padding: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form__container div {
+    width: 100%;
+}
+
+.form__container div label {
+    color: #fff;
+}
+
+.form__container div input {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 36px;
+}
+
+.form__container select option, .form__container div select option  {
+    color: #000;
+}
+
+.form__container .submit {
+    width: 200px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Roboto Mono';
+    transition: .4s ease-in-out;
+    margin-top: 20px;
+}
+
+.form__container .submit:hover {
+    scale: 1.1;
+    transition: .4s ease-in-out;
+}
+
+.form__container h3 {
+    color: #fff;
+    font-family: 'Roboto Mono';
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

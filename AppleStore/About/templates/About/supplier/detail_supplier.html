@@ -1,0 +1,32 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+{% block title %}{{object.name}}{% endblock  %}
+
+{% block content %}
+    <div class="detail__supplier">
+        <h2>{{ object.name }}</h2>
+        <h3>ФИО: {{object.agent_lastname}} {{object.agent_name}} {{object.agent_surname}}</h3>
+        <h3>Адрес: {{ object.location }}</h3>
+        <h3>Телефон: {{ object.phone }}</h3>
+        <h3 style="margin-bottom: 50px;">
+            Поставки: <br/><br/>
+            {% if not object.supply.possupply_set.all %}
+                Отсутствуют
+            {% else %}
+                {% for possupply in object.supply.possupply_set.all %}
+                    {{ possupply.product.name }} || {{ possupply.count }} шт. <br/>
+                {% endfor %}
+            {% endif %}
+        </h3>
+        <div class="supplier__staff__btn">
+            {% if request.user.is_staff %}
+            <a href="{% url "update_supplier" supplier.pk %}"><button>Изменить</button></a>
+            <form method="post" action="{% url "delete_supplier" supplier.pk %}">
+                {% csrf_token %}
+                <button>Удалить</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

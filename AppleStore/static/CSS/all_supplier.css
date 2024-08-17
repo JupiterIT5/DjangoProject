@@ -1,0 +1,84 @@
+.supplier__container {
+    gap: 50px;
+    display: grid;
+    margin: 50px auto;
+    justify-content: center;
+    grid-template-columns: 300px 300px 300px;
+}
+
+.add__supplier {
+    width: 200px;
+    height: 41px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    font-family: "Roboto Mono";
+    transition: .3s ease-in-out;
+    margin-top: 30px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add__supplier:hover {
+    scale: 1.1;
+    transition: .3s ease-in-out;
+}
+
+.supplier {
+    width: 300px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.supplier h3 {
+    font-size: 20px;
+    font-family: 'Roboto Mono';
+    line-height: 28px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.supplier__btn {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    gap: 10px;
+}
+
+.supplier__btn button {
+    width: 100px;
+    height: 31px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    font-family: "Roboto Mono";
+    transition: .3s ease-in-out;
+}
+
+.supplier__btn button:hover {
+    scale: 1.1;
+    transition: .3s ease-in-out;
+}
+
+
+.supplier__btn .staff__btn {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,33 @@
+{% extends "block/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock  %}
+
+{% block content %}
+    {% if request.user.is_staff %}<a href="{% url "create_product" %}" class="add__product">Добавить товар</a>{% endif %}
+    <div class="product_container">
+        {% for product in object_list %}
+            {% if not product.is_exixst %}
+                <div class="product">
+                    <div class="product__photo"><img src="{{ product.photo.url }}" /></div>
+                    <a href="{% url "one_product" product.pk %}"><div class="product__name">{{ product.name }}</div></a>
+                    <div class="product__price">{{ product.price }} ₽</div>
+
+                    {% if request.user.is_authenticated %}
+                        <div class="product__btn">
+                            {% if request.user.is_staff %}
+                                <div class="staff__btn">
+                                    <a href="{% url "update_product" product.pk %}"><button>Изменить</button></a>
+                                    <form method="post" action="{% url "delete_product" product.pk %}">
+                                        {% csrf_token %}
+                                        <button>Удалить</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>    
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock  %}
