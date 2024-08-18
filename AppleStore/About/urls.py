@@ -3,9 +3,9 @@ from rest_framework import routers
 from .views import *
 
 urlpatterns = [
-    path('', redirectToHomePage),
+    path('', redirectToProductPage),
     
-    path('product/all', AppleList.as_view(), name="home_page"),
+    path('product/all', AppleList.as_view(), name="product_page"),
     path('product/<int:pk>', detail_product, name="one_product"),
     path('product/create', AppleCreate.as_view(), name="create_product"),
     path('product/update/<int:pk>', AppleUpdate.as_view(), name="update_product"),
@@ -20,22 +20,14 @@ urlpatterns = [
     path('order/all', OrderList.as_view(), name="order_page"),
     path('order/<int:pk>', OrderDetail.as_view(), name="order_detail"),
     path('order/delete/<int:pk>', DeleteOrder.as_view(), name="order_delete"),
-    
-    path('logout', user_logout, name="log out"),
 ]
 
 router = routers.SimpleRouter()
 router.register('api/products', ProductViewSet, basename='product')
 router.register('api/product_simple', ProductViewSetDif, basename='product_simple')
-# router.register('api/supplier', SupplierViewSet, basename='supplier')
-# router.register('api/supply', SupplyViewSet, basename='supply')
 router.register('api/parametr', ParametrViewSet, basename='parametr')
 router.register('api/tag', TagViewSet, basename='tag')
 router.register('api/category', CategoryViewSet, basename='category')
-# router.register('api/warehouse', WarehouseViewSet, basename='warehouse')
-# router.register('api/inventory', InventoryViewSet, basename='inventory')
-# router.register('api/review', ReviewViewSet, basename='review')
-# router.register('api/supplier_simple', SupplierList, basename='supplier_simple')
 router.register('api/product_pagination', ProductPaginationViewSet, basename='product_pagination')
 urlpatterns += router.urls
 

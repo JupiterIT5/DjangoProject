@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url "home_page" %}">Apple Store</a>
+      <a class="navbar-brand" href="{% url "product_page" %}">Apple Store</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link {% if request.build_absolute_uri == 'http://localhost:8000/product/all' %}active{% endif %}" href="{% url "home_page" %}">Товары</a>
+            <a class="nav-link {% if request.build_absolute_uri == 'http://localhost:8000/product/all' %}active{% endif %}" href="{% url "product_page" %}">Товары</a>
           </li>
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url "basket_detail" %}">Корзина</a>
+            <a class="nav-link {% if request.build_absolute_uri == 'http://localhost:8000/baskets/' %}active{% endif %}" href="{% url "basket_detail" %}">Корзина</a>
           </li>
           {% if request.user.is_staff %}
                 <li class="nav-item">
@@ -19,15 +19,15 @@
                 </li>
             {% endif %}
               <li class="nav-item">
-                <a class="nav-link {% if 'profile' in request.build_absolute_uri %}active{% endif %}" href="#">Профиль</a>
+                <a class="nav-link {% if request.build_absolute_uri == 'http://localhost:8000/profile' %}active{% endif %}" href="#">Профиль</a>
               </li>
           {% endif %}
           {% if request.user.is_anonymous %}
             <li class="nav-item">
-              <a class="nav-link" href="#">Войти</a>
+              <a class="nav-link {% if request.build_absolute_uri == 'http://localhost:8000/profile/login' %}active{% endif %}" href="{% url "log in" %}">Войти</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Регистрация</a>
+              <a class="nav-link {% if request.build_absolute_uri == 'http://localhost:8000/profile/reg' %}active{% endif %}" href="{% url "reg" %}">Регистрация</a>
             </li>
           {% endif %}
         </ul>

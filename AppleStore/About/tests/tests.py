@@ -1,5 +1,5 @@
 from django.test import TestCase
-from shop.utils import *
+from About.utils import *
 
 
 class CalculateMoneyDefTestCase(TestCase):

@@ -3,5 +3,7 @@ from .views import *
 
 
 urlpatterns = [
-    path('', list_profile)
+    path('reg', user_registraion, name="reg"),
+    path('login', user_login, name="log in"),
+    path('logout', user_logout, name="log out"),
 ]

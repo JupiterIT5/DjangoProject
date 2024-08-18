@@ -13,8 +13,8 @@ from basket.forms import BasketAddProductForm
 from .models import *
 from .forms import *
 
-def redirectToHomePage(request):
-    return redirect('home_page')
+def redirectToProductPage(request):
+    return redirect('product_page')
 
 
 class AppleList(ListView):
@@ -52,7 +52,7 @@ class AppleUpdate(UpdateView):
 
 class AppleDelete(DeleteView):
     model = Product
-    success_url = reverse_lazy('home_page')
+    success_url = reverse_lazy('product_page')
     
 
 class SupplierList(ListView):
@@ -103,18 +103,12 @@ class OrderDetail(DetailView):
 class DeleteOrder(DeleteView):
     model = PosOrder
     success_url = reverse_lazy('order_page')
-    
-        
-def user_logout(request):
-    logout(request)
-    messages.success(request, 'You came out from a profile!')
-    return redirect('home_page')
 
 
 def test_json(request):
     return JsonResponse({
         'message': 'Данные в виде JSON',
-        'products': reverse_lazy('home_page'),
+        'products': reverse_lazy('product_page'),
         'suppliers': reverse_lazy('supplier_page')
     })
     
@@ -155,3 +149,4 @@ class ProductPaginationViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     pagination_class = PaginationPage
+

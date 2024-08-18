@@ -51,7 +51,7 @@
             </tr>
             </tbody>
         </table>
-        <a href="{% url 'home_page' %}" class="btn btn-outline-success">Обратно к товарам</a>
+        <a href="{% url 'product_page' %}" class="btn btn-outline-success">Обратно к товарам</a>
         {% if basket|length > 0 %}
             <a href="{% url 'order_open' %}" class="btn btn-outline-primary">Сделать заказ</a>
         {% endif %}
